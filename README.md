@@ -128,14 +128,6 @@ Benefits of TypeScript
 - Easier Maintenance: Type definitions make it easier to understand and refactor code
 - Better Team Collaboration: Clear interfaces between components and modules
 
-Future Improvements
-
-- Add a 5-day forecast with TypeScript interfaces for the forecast data
-- Implement geolocation with typed APIs
-- Add more detailed weather information with proper typing
-- Implement animations for weather conditions
-- Add unit tests for all components and services
-- Support for multiple languages with typed translation keys
 
 # Learn More
 To learn more about React Native, take a look at the following resources:
