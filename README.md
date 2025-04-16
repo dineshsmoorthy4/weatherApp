@@ -38,15 +38,17 @@ bash npm install
 # or
 yarn install
 
-Open the src/services/weatherService.ts file and replace YOUR_API_KEY with your actual OpenWeatherMap API key.
 For iOS, install pods:
 bashcd ios && pod install && cd ..
 
 Run the application:
 For iOS:
+
 bash npx react-native run-ios
 For Android:
+
 bash npx react-native run-android
+
 
 Project Structure
 
