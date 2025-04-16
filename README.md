@@ -30,16 +30,20 @@ OpenWeatherMap API key
 Installation
 
 Clone the repository:
-bashgit clone https://github.com/dineshsmoorthy4/weatherApp.git
+
+bash git clone https://github.com/dineshsmoorthy4/weatherApp.git
+
 cd weatherApp
 
 Install dependencies:
+
 bash npm install
 # or
+
 yarn install
 
 For iOS, install pods:
-bashcd ios && pod install && cd ..
+bash cd ios && pod install && cd ..
 
 Run the application:
 For iOS:
