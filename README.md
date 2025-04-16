@@ -30,7 +30,7 @@ OpenWeatherMap API key
 Installation
 
 Clone the repository:
-bashgit clone https://github.com/yourusername/weatherApp.git
+bashgit clone https://github.com/dineshsmoorthy4/weatherApp.git
 cd weatherApp
 
 Install dependencies:
