@@ -49,6 +49,7 @@ For Android:
 bash npx react-native run-android
 
 Project Structure
+
 weather-app-ts/
 ├── android/
 ├── ios/
