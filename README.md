@@ -43,6 +43,7 @@ bash npm install
 yarn install
 
 For iOS, install pods:
+
 bash cd ios && pod install && cd ..
 
 Run the application:
@@ -56,30 +57,49 @@ bash npx react-native run-android
 
 Project Structure
 
-weather-app-ts/
-├── android/
-├── ios/
+weather-app/
 ├── src/
-│   ├── components/   
-│   │   └── WeatherCard.tsx
-│   ├── context/      
+│   ├── assets/
+│   ├── components/
+│   │   ├── CityInput/
+│   │   │   ├── CityInput.tsx
+│   │   │   └── styles.ts
+│   │   ├── WeatherCard/
+│   │   │   ├── WeatherCard.tsx
+│   │   │   └── styles.ts
+│   │   └── ThemeToggle/
+│   │       ├── ThemeToggle.tsx
+│   │       └── styles.ts
+│   ├── config/
+│   │   └── constants.ts
+│   ├── context/
 │   │   ├── ThemeContext.tsx
 │   │   └── WeatherContext.tsx
-│   ├── hooks/        
-│   │   ├── useTheme.ts
+│   ├── hooks/
+│   │   ├── useDebounce.ts
+│   │   ├── useNetworkStatus.ts
 │   │   └── useWeather.ts
-│   ├── screens/      
-│   │   └── HomeScreen.tsx
-│   ├── services/     
+│   ├── services/
+│   │   ├── api.ts
 │   │   └── weatherService.ts
-│   ├── types/       
-│   │   └── index.ts
-│   └── utils/        
-├── __tests__/        # Test files
-├── App.tsx
-├── index.js
-├── tsconfig.json
-├── package.json
+│   ├── styles/
+│   │   ├── globalStyles.ts
+│   │   └── theme.ts
+│   ├── types/
+│   │   └── weatherTypes.ts
+│   ├── utils/
+│   │   ├── helpers.ts
+│   │   └── storage.ts
+│   ├── App.tsx
+│   └── HomeScreen.tsx
+├── __tests__/
+│   ├── components/
+│   └── hooks/
+├── .env
+├── app.json
+├── babel.config.js
+├── metro.config.js
+└── package.json
 └── README.md
 
 Architectural Decisions
