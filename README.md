@@ -173,4 +173,4 @@ To learn more about React Native, take a look at the following resources:
 ## License
 This project is licensed under the MIT © 2025 License.
 
-## Developed with ❤️ by [Dinesh.Smoorthy](https://dinesh.smoorthy.com)
+## Developed with ❤️ by [Dinesh.Smoorthy](https://www.dineshsmoorthy.com)
