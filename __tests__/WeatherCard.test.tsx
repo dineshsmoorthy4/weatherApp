@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react-native';
-import WeatherCard from '../src/components/WeatherCard';
+import WeatherCard from '../src/components/WeatherCard/WeatherCard';
 import {WeatherData, ThemeColors} from '../src/types';
 
 describe('WeatherCard', () => {

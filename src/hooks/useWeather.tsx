@@ -1,6 +1,53 @@
-import {useContext} from 'react';
-import {WeatherContext} from '../context/WeatherContext';
+import { useState, useEffect, useCallback } from 'react';
+import { fetchWeatherByCity } from '../services/weatherService';
+import { useDebounce } from './useDebounce';
+import { useNetworkStatus } from './useNetworkStatus';
+import { storeData } from '../utils/storage';
+import { LAST_SEARCHED_CITY_KEY } from '../config/constants';
+import { WeatherData } from '../types/weatherTypes';
 
 export const useWeather = () => {
-  return useContext(WeatherContext);
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const { isConnected } = useNetworkStatus();
+  const debouncedCity = useDebounce(city, 500);
+
+  const fetchWeather = useCallback(async (cityName: string) => {
+    if (!cityName.trim()) return;
+    
+    setLoading(true);
+    setError('');
+    
+    try {
+      if (!isConnected) {
+        throw new Error('No internet connection. Please check your network.');
+      }
+      
+      const data = await fetchWeatherByCity(cityName);
+      setWeather(data);
+      await storeData(LAST_SEARCHED_CITY_KEY, cityName);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+      setWeather(null);
+    } finally {
+      setLoading(false);
+    }
+  }, [isConnected]);
+
+  useEffect(() => {
+    if (debouncedCity) {
+      fetchWeather(debouncedCity);
+    }
+  }, [debouncedCity, fetchWeather]);
+
+  return {
+    city,
+    setCity,
+    weather,
+    loading,
+    error,
+    fetchWeather,
+  };
 };

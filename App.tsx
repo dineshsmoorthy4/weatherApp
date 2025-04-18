@@ -1,39 +1,23 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider, useTheme } from './src/context/ThemeContext';
+import { WeatherProvider } from './src/context/WeatherContext';
 import HomeScreen from './src/screens/HomeScreen';
-import {WeatherProvider} from './src/context/WeatherContext';
-import {ThemeProvider} from './src/context/ThemeContext';
-
-type RootStackParamList = {
-  Home: undefined;
-};
-
-const Stack = createStackNavigator<RootStackParamList>();
+import { globalStyles } from './src/styles/globalStyles';
+import { StatusBar } from 'react-native';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const { theme, isDarkMode  } = useTheme();
 
   return (
-    <ThemeProvider>
-      <WeatherProvider>
-        <NavigationContainer>
-          <SafeAreaView style={{flex: 1}}>
-            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-            <Stack.Navigator>
-              <Stack.Screen 
-                name="Home" 
-                component={HomeScreen} 
-                options={{
-                  headerShown: false,
-                }}
-              />
-            </Stack.Navigator>
-          </SafeAreaView>
-        </NavigationContainer>
-      </WeatherProvider>
-    </ThemeProvider>
+    <SafeAreaProvider style={globalStyles(theme).safeArea}>
+      <ThemeProvider>
+        <StatusBar barStyle={isDarkMode ? 'dark-content' : 'light-content'} />
+        <WeatherProvider>
+          <HomeScreen />
+        </WeatherProvider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 };
 
