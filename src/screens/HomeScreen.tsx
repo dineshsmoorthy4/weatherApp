@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, ScrollView, ActivityIndicator } from 'react-native';
 import { useWeather } from '../hooks/useWeather';
 import { useTheme } from '../context/ThemeContext';
@@ -13,7 +13,23 @@ const HomeScreen = () => {
   const { city, setCity, weather, loading, error, fetchWeather } = useWeather();
   const { theme } = useTheme();
   const styles = globalStyles(theme);
+  const [initialLoad, setInitialLoad] = useState(true);
 
+  useEffect(() => {
+    if (weather !== null || error) {
+      setInitialLoad(false);
+      setCity('');
+    }
+  }, [weather, error]);
+
+  if (initialLoad) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color={theme.primary} />
+      </View>
+    );
+  }
+  
   return (
     <View style={styles.container}>
       <ScrollView
