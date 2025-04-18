@@ -30,25 +30,32 @@ OpenWeatherMap API key
 Installation
 
 Clone the repository:
-bashgit clone https://github.com/yourusername/weatherApp.git
+
+bash git clone https://github.com/dineshsmoorthy4/weatherApp.git
+
 cd weatherApp
 
 Install dependencies:
+
 bash npm install
 # or
+
 yarn install
 
-Open the src/services/weatherService.ts file and replace YOUR_API_KEY with your actual OpenWeatherMap API key.
 For iOS, install pods:
-bashcd ios && pod install && cd ..
+bash cd ios && pod install && cd ..
 
 Run the application:
 For iOS:
+
 bash npx react-native run-ios
 For Android:
+
 bash npx react-native run-android
 
+
 Project Structure
+
 weather-app-ts/
 ├── android/
 ├── ios/
@@ -125,14 +132,6 @@ Benefits of TypeScript
 - Easier Maintenance: Type definitions make it easier to understand and refactor code
 - Better Team Collaboration: Clear interfaces between components and modules
 
-Future Improvements
-
-- Add a 5-day forecast with TypeScript interfaces for the forecast data
-- Implement geolocation with typed APIs
-- Add more detailed weather information with proper typing
-- Implement animations for weather conditions
-- Add unit tests for all components and services
-- Support for multiple languages with typed translation keys
 
 # Learn More
 To learn more about React Native, take a look at the following resources:
